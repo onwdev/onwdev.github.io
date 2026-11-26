@@ -24,10 +24,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: clamp(1.6rem, 4vw, 2.3rem);
     font-weight: 200;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     position: relative;
 }
 
@@ -55,7 +55,7 @@ p {
 /* Header */
 header {
     background-color: #fff;
-    padding: 2rem 0;
+    padding: 1.25rem 0;
     border-bottom: 1px solid #e0e0e0;
     text-align: center;
 }
@@ -67,9 +67,9 @@ header {
 }
 
 .logo-image {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 1rem;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 0.5rem;
     filter: grayscale(100%);
 }
 
@@ -92,6 +92,9 @@ header {
 
 /* Navigation */
 nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     background-color: #000;
     padding: 0;
 }
@@ -112,7 +115,8 @@ nav a {
     display: block;
     color: #fff;
     text-decoration: none;
-    padding: 1.2rem 2rem;
+    padding: 0.95rem 1.5rem;
+    white-space: nowrap;
     font-weight: 300;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -132,7 +136,8 @@ main {
 }
 
 section {
-    padding: 4rem 0;
+    padding: clamp(2rem, 5vw, 3rem) 0;
+    scroll-margin-top: 56px;
     border-bottom: 1px solid #f0f0f0;
 }
 
@@ -143,8 +148,8 @@ section:last-child {
 /* Special Features */
 .app-special {
     background-color: #fafafa;
-    padding: 2.5rem;
-    margin: 3rem 0;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    margin: 2rem 0 0;
     border-left: 3px solid #000;
 }
 
@@ -188,14 +193,14 @@ section:last-child {
 /* Feature List */
 .feature-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-    margin: 3rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0;
 }
 
 .feature-item {
     text-align: center;
-    padding: 2rem;
+    padding: 1.5rem 1.25rem;
     background-color: #fff;
     border: 1px solid #e0e0e0;
     transition: border-color 0.3s ease;
@@ -206,8 +211,8 @@ section:last-child {
 }
 
 .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+    margin-bottom: 0.75rem;
     filter: grayscale(100%);
 }
 
@@ -239,7 +244,7 @@ section:last-child {
 /* AdMob Section */
 .admob-container {
     background-color: #f8f8f8;
-    padding: 3rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
     margin: 2rem 0;
     border: 1px solid #e0e0e0;
 }
@@ -309,8 +314,17 @@ footer {
     background-color: #000;
     color: #fff;
     text-align: center;
-    padding: 3rem 0;
-    margin-top: 4rem;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+}
+
+.footer-contact {
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.footer-contact a {
+    color: #fff;
 }
 
 footer h3 {
@@ -326,10 +340,17 @@ footer h3 {
     margin-bottom: 1.5rem;
 }
 
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 0.5rem;
+}
+
 .footer-links a {
     color: #ccc;
     text-decoration: none;
-    margin: 0 1.5rem;
+    padding: 0.5rem 0.75rem;
     font-weight: 300;
     letter-spacing: 0.5px;
     font-size: 0.9rem;
@@ -359,18 +380,24 @@ footer h3 {
         font-size: 2rem;
     }
     
+    /* One compact, scrollable row instead of four stacked rows. */
     nav ul {
-        flex-direction: column;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scrollbar-width: none;
     }
-    
+
+    nav ul::-webkit-scrollbar {
+        display: none;
+    }
+
     nav a {
-        padding: 1rem;
-        border-bottom: 1px solid #333;
+        padding: 0.85rem 1rem;
+        font-size: 0.8rem;
     }
-    
+
     .feature-list {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1rem;
     }
     
     main {
@@ -378,13 +405,7 @@ footer h3 {
     }
     
     section {
-        padding: 3rem 0;
-    }
-    
-    .app-special,
-    .admob-container {
-        padding: 2rem;
-        margin: 2rem 0;
+        padding: 2rem 0;
     }
 }
 
@@ -403,12 +424,11 @@ footer h3 {
     }
     
     .feature-item {
-        padding: 1.5rem;
+        padding: 1.25rem 1rem;
     }
-    
-    .app-special,
-    .admob-container {
-        padding: 1.5rem;
+
+    p {
+        line-height: 1.7;
     }
 }
 
